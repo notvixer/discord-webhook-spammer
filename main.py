@@ -18,9 +18,9 @@ message = "@here\nVixer Runs You <3" #enter your spam message here
 
 
 async def spam(sexxx):
-  async with sexxx.post(hook, json={'content': message}) as resp:
-    if resp.status in (200, 201, 204):
-      print("Sent A Message Successfully")
+  await sexxx.post(hook, json={'content': message})
+ #   if resp.status in (200, 201, 204):
+    #  print("Sent A Message Successfully")
 
 
 async def main():
