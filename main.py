@@ -30,7 +30,7 @@ async def main():
     tasks = []
     for i in range(999):
       tasks.append(asyncio.create_task(spam(ses)))
-      await asyncio.gather(*tasks)
+    await asyncio.gather(*tasks)
 
 if __name__ == '__main__':
   asyncio.run(main())
