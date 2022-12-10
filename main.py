@@ -1,7 +1,5 @@
 try:
-  import os
-  os.system('pip install aiosonic')
-  import asyncio, aiosonic, json
+  import asyncio, aiosonic, json, os
 except Exception as err:
   print(err)
   exit()
@@ -10,7 +8,7 @@ from aiosonic.connectors import TCPConnector
 
 ########################
 
-
+os.system('clear')
 hook = str(input("webhook link: "))
 
 message = "@here\nVixer Runs You <3" #enter your spam message here
