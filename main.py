@@ -31,7 +31,7 @@ async def spam(sexxx):
 
 
 async def main():
-  async with aiosonic.HTTPClient(TCPConnector(pool_size=99)) as ses:
+  async with aiosonic.HTTPClient(TCPConnector(pool_size=999)) as ses:
     tasks = []
     for i in range(999):
       tasks.append(asyncio.create_task(spam(ses)))
