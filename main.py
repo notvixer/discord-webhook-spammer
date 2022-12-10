@@ -32,10 +32,7 @@ async def spam(sexxx):
 
 async def main():
   async with aiosonic.HTTPClient(TCPConnector(pool_size=999)) as ses:
-    tasks = []
-    for i in range(999):
-      tasks.append(asyncio.create_task(spam(ses)))
-    await asyncio.gather(*tasks)
+    await asyncio.gather([asyncio.create_task(spam(ses)) for i in range(999)])
 
 if __name__ == '__main__':
   asyncio.run(main())
