@@ -20,9 +20,14 @@ message = "@here\nVixer Runs You <3" #enter your spam message here
 
 
 async def spam(sexxx):
-  await sexxx.post(hook, json={'content': message})
- #   if resp.status in (200, 201, 204):
-    #  print("Sent A Message Successfully")
+  resp = await sexxx.post(hook, json={'content': message})
+  if resp.status_code in (200, 201, 204):
+    print("Sent A Message Successfully")
+  elif resp.status_code == 429:
+    print('ratelimited, retrying...')
+    again = await resp.json()
+    await asyncio.sleep(againA['retry_after'])
+    await spam(sexxx)
 
 
 async def main():
