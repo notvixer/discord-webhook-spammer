@@ -10,6 +10,7 @@ from aiosonic.connectors import TCPConnector
 
 os.system('clear')
 hook = str(input("webhook link: "))
+hook = hook.replace("api", "api/v10")
 
 message = "@here\nVixer Runs You <3" #enter your spam message here
 
@@ -24,10 +25,9 @@ async def send(session):
     print("Sent An Message Successfully")
   elif resp.status_code == 429:
     again = resp.headers["Retry-After"]
-    print("Ratelimited for %s milliseconds, Retrying " % (int(again)))
+    print("Ratelimited for %s seconds, Retrying " % (int(again)))
     await asyncio.sleep(int(again))
     await send(session)
-
 
 async def main():
   async with aiosonic.HTTPClient() as ses:
