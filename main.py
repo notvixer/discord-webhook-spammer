@@ -24,7 +24,7 @@ async def send(session):
     print("Sent An Message Successfully")
   elif resp.status_code == 429:
     again = resp.headers["Retry-After"]
-    print("Ratelimited for %s seconds, Retrying " % (again))
+    print("Ratelimited for %s seconds, Retrying " % (int(again)))
     await asyncio.sleep(int(again))
     await send(session)
 
