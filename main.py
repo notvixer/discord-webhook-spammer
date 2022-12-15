@@ -22,8 +22,8 @@ async def spam(session):
   if resp.status_code in (200, 201, 204):
     print("Sent A Message Successfully")
   elif resp.status_code == 429:
-    print('ratelimited, retrying...')
     again = await resp.json()
+    print('ratelimited for %d seconds, retrying...' % (again['retry_after']))
     await asyncio.sleep(again['retry_after'])
     await spam(session)
 
